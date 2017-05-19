@@ -1,0 +1,15 @@
+.mailBlock__input {
+  padding: 5%;
+  border-radius: 5px;
+  border: 1px solid #d3daff;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
+
+.dz-default {
+  padding: 5%;
+  border-radius: 5px;
+  border: 1px dashed #d3daff;
+  font-size: 30px;
+  margin-bottom: 20px;
+}
