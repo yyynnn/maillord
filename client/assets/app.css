@@ -21,6 +21,16 @@ list-style-type: none;
   text-align: right;
 }
 
+h1 {
+  color: #252c4e;
+  margin: 0;
+}
+
+::-webkit-input-placeholder {color:#d3daff;font-family: 'CoreSans';}
+::-moz-placeholder          {color:#d3daff;font-family: 'CoreSans';}/* Firefox 19+ */
+:-moz-placeholder           {color:#d3daff;font-family: 'CoreSans';}/* Firefox 18- */
+:-ms-input-placeholder      {color:#d3daff;font-family: 'CoreSans';}
+
 .app__children {
   z-index: 1;
   display: flex;

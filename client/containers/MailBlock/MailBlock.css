@@ -1,15 +1,33 @@
 .mailBlock__input {
-  padding: 5%;
+  padding: 4%;
   border-radius: 5px;
   border: 1px solid #d3daff;
-  font-size: 30px;
-  margin-bottom: 20px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  font-family: 'CoreSans';
 }
 
-.dz-default {
-  padding: 5%;
+.mailBlock__dropzone {
+  padding: 4%;
   border-radius: 5px;
   border: 1px dashed #d3daff;
-  font-size: 30px;
-  margin-bottom: 20px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  transition: 200ms all ease;
+  color: #d3daff;
+  cursor: pointer;
+}
+
+.mailBlock__dropzone_active {
+      border: 3px solid #3e58ea;
+}
+
+.mailBlock__dropzone_reject {
+      border: 3px solid #ea3e3e;
+}
+
+.mailBlock__heading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
