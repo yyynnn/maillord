@@ -40,6 +40,11 @@ justify-content: center;
 align-items: center;
 }
 
+.container {
+  width: 100%;
+padding: 0 3%;
+}
+
 @media (max-width: 500px ) {
   .app__children {
       align-items: center;

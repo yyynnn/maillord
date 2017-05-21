@@ -1,15 +1,15 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
-import Button from '../components/Button/Button.js';
+import React from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Link } from "react-router";
+import Button from "../components/Button/Button.js";
 
-import MailBlock from './MailBlock/MailBlock.js';
+import MailBlock from "./MailBlock/MailBlock.js";
 
-import * as timeOfDay from '../redux/actions/timeOfDay';
-import * as localeChange from '../redux/actions/localeChange';
+import * as timeOfDay from "../redux/actions/timeOfDay";
+import * as localeChange from "../redux/actions/localeChange";
 
-import './Home.css';
+import "./Home.css";
 
 class Home extends React.Component {
   constructor(props, context) {
@@ -25,7 +25,9 @@ class Home extends React.Component {
     const mailBlock = this.state.mailBlock;
     let key = this.state.key;
     this.setState({
-      mailBlock: mailBlock.concat(<MailBlock id={this.state.key} key={this.state.key} onRemoveBtnClick={this.onRemoveBtnClick} />),
+      mailBlock: mailBlock.concat(
+        <MailBlock length={mailBlock.length} id={this.state.key} key={this.state.key} onRemoveBtnClick={this.onRemoveBtnClick} />
+      ),
       key: key + 1
     });
   }
@@ -34,11 +36,11 @@ class Home extends React.Component {
     let mailBlock = this.state.mailBlock;
     let key = this.state.key;
     this.setState({
-      mailBlock: mailBlock.splice(event, 1),
-      key: key - 1
+      mailBlock: mailBlock.filter(function(element) {
+        console.log(element.key, event, Number(element.key) !== event);
+        return Number(element.key) !== event;
+      })
     });
-    console.log(`event index is `, event);
-    console.log(`onDelete blocks are `, this.state);
   }
 
   render() {

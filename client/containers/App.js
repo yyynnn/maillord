@@ -1,9 +1,9 @@
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
+import React, { Component, PropTypes } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 
-import * as timeOfDay from '../redux/actions/timeOfDay';
-import * as localeChange from '../redux/actions/localeChange';
+import * as timeOfDay from "../redux/actions/timeOfDay";
+import * as localeChange from "../redux/actions/localeChange";
 
 class App extends Component {
   constructor(props, context) {
@@ -12,10 +12,8 @@ class App extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="app__children">
-          {this.props.children}
-        </div>
+      <div className="app__children">
+        {this.props.children}
       </div>
     );
   }
