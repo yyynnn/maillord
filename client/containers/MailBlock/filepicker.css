@@ -1,17 +1,4 @@
 /* Filepicker CSS */
-.filepicker {
-    font-family: sans-serif;
-}
-
-div.filepicker {
-    text-align: center;
-    padding: 5px;
-    background-color: #E1E1E1;
-    border-radius: 5px;
-    min-height: 60px;
-    border: 2px dashed #C7C7C7;
-}
-
 /* Icon */
 .filepicker-file-icon
 {

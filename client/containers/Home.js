@@ -6,8 +6,7 @@ import Button from "../components/Button/Button.js";
 
 import MailBlock from "./MailBlock/MailBlock.js";
 
-import * as timeOfDay from "../redux/actions/timeOfDay";
-import * as localeChange from "../redux/actions/localeChange";
+import * as addHeading from "../redux/actions/addHeading";
 
 import "./Home.css";
 
@@ -19,6 +18,10 @@ class Home extends React.Component {
       key: 0
     };
     this.onRemoveBtnClick = this.onRemoveBtnClick.bind(this);
+  }
+
+  onDownloadReady(event) {
+    console.log("server start");
   }
 
   onAddBtnClick(event) {
@@ -47,10 +50,10 @@ class Home extends React.Component {
     return (
       <div className="container">
         <div className="home__main">
-          {console.log(`current blocks are `, this.state)}
           {this.state.mailBlock}
-          <Button onClickEvent={::this.onAddBtnClick} />
+          <Button data={"+"} onClickEvent={::this.onAddBtnClick} />
         </div>
+        <Button buttonType={"button__download"} data={"Скачать"} onClickEvent={::this.onDownloadReady} />
       </div>
     );
   }
@@ -65,8 +68,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      passTimeOfDay: bindActionCreators(timeOfDay, dispatch),
-      localeChangeAction: bindActionCreators(localeChange, dispatch)
+      passTimeOfDay: bindActionCreators(addHeading, dispatch)
     }
   };
 }

@@ -16,6 +16,28 @@
   cursor: pointer;
 }
 
+.button__download {
+  backface-visibility: hidden;
+  width: 100%;
+    position: fixed;
+    max-width: 180px;
+    border: 1px solid #d3daff;
+    background-color: transparent;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+    color: #424d82;
+    border-radius: 0;
+    font-family: 'CoreSans'!important;
+    margin: 2%;
+    font-size: 27px;
+    border-radius: 5px;
+}
+
+.button__download:hover {
+  border: 1px solid #424d82;
+}
+
 .button:hover {
   box-shadow: 0 16px 20px -7px #848fce;
 }

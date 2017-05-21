@@ -26,11 +26,7 @@ class MailBlock extends React.Component {
     });
   }
 
-  // onDrop(files) {
-  //   console.log("Received files: ", files);
-  // }
   render() {
-    console.log(this.state);
     var componentConfig = {
       iconFiletypes: [".jpg", ".png", ".gif"],
       showFiletypeIcon: true,
@@ -40,32 +36,33 @@ class MailBlock extends React.Component {
     var eventHandlers = { addedfile: file => console.log(file) };
     return (
       <div className="mailBlock__main">
-        <div className="mailBlock__heading">
-          <span>
-            <ButtonRemove onClickEvent={() => this.props.onRemoveBtnClick(this.props.id)} />
-          </span>
-        </div>
-        <div>
-          <DropzoneComponent config={componentConfig} eventHandlers={eventHandlers} djsConfig={djsConfig} />
-          <input
-            name="heading"
-            value={this.state.heading}
-            onChange={::this.handleChange}
-            className="mailBlock__input mailBlock__load-heading"
-            type="text"
-            placeholder="Заголовок"
-          />
-        </div>
-        <div>
-          <textarea
-            name="mainText"
-            value={this.state.mainText}
-            onChange={::this.handleChange}
-            className="mailBlock__input mailBlock__load-text"
-            type="text"
-            placeholder="Текст"
-          />
-        </div>
+        <span>
+          <ButtonRemove onClickEvent={() => this.props.onRemoveBtnClick(this.props.id)} />
+        </span>
+        <DropzoneComponent
+          className="mailBlock__dropzone"
+          activeClassName="mailBlock__dropzone_active"
+          rejectClassName="mailBlock__dropzone_reject"
+          config={componentConfig}
+          eventHandlers={eventHandlers}
+          djsConfig={djsConfig}
+        />
+        <input
+          name="heading"
+          value={this.state.heading}
+          onChange={::this.handleChange}
+          className="mailBlock__input mailBlock__load-heading"
+          type="text"
+          placeholder="Заголовок"
+        />
+        <textarea
+          name="mainText"
+          value={this.state.mainText}
+          onChange={::this.handleChange}
+          className="mailBlock__input mailBlock__load-text"
+          type="text"
+          placeholder="Текст"
+        />
       </div>
     );
   }

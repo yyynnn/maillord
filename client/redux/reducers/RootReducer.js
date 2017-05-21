@@ -1,14 +1,10 @@
 import { combineReducers } from "redux";
 import { routerReducer } from "react-router-redux";
 
-import itemClick from "./itemClick";
-import localeChange from "./localeChange";
-import timeOfDay from "./timeOfDay";
+import addHeading from "./addHeading";
 
 let RootReducer = combineReducers({
-  itemClick,
-  localeChange,
-  timeOfDay,
+  addHeading,
   routing: routerReducer
 });
 

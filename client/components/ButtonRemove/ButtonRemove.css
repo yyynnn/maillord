@@ -11,6 +11,9 @@
     cursor: pointer;
     margin: 0 20px;
     color: #8088b1;
+    position: absolute;
+    right: -20px;
+    top: -40px;
 }
 
 .button_remove:hover {

@@ -1,13 +1,26 @@
+.mailBlock__main {
+  width: 100%;
+max-width: 800px;
+margin: auto;
+display: flex;
+justify-content: center;
+flex-direction: column;
+position: relative;
+margin-top: 35px;
+}
+
 .mailBlock__input {
-  padding: 4%;
+  padding: 2%;
   border-radius: 5px;
   border: 1px solid #d3daff;
   font-size: 16px;
   margin-bottom: 10px;
   font-family: 'CoreSans';
+  background-color: #fff;
 }
 
 .mailBlock__dropzone {
+  text-align: center;
   padding: 4%;
   border-radius: 5px;
   border: 1px dashed #d3daff;
@@ -16,6 +29,7 @@
   transition: 200ms all ease;
   color: #d3daff;
   cursor: pointer;
+  background-color: #fff;
 }
 
 .mailBlock__dropzone_active {
