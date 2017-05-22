@@ -36,9 +36,7 @@
   bottom: 0;
 }
 
-.button__download:hover {
-  border: 1px solid #424d82;
-}
+
 
 .button:hover {
   border: 1px solid #424d82;
@@ -46,4 +44,8 @@
   background-color: #424d82;
   color: #fff;
     border-radius: 50%;
+}
+.button__download:hover {
+  border: 1px solid #424d82;
+  border-radius: 5px;
 }

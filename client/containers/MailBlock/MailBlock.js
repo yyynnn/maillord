@@ -1,18 +1,19 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
-import ReactDOM from 'react-dom';
-import DropzoneComponent from 'react-dropzone-component';
+import React, { PropTypes } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { Link } from "react-router";
+import ReactDOM from "react-dom";
+import DropzoneComponent from "react-dropzone-component";
 
-import ButtonRemove from '../../components/ButtonRemove/ButtonRemove.js';
+import ButtonRemove from "../../components/ButtonRemove/ButtonRemove.js";
+import TextEditor from "../TextEditor/TextEditor.js";
 
-import * as addHeading from '../../redux/actions/addHeading';
-import * as addMainText from '../../redux/actions/addMainText';
+import * as addHeading from "../../redux/actions/addHeading";
+import * as addMainText from "../../redux/actions/addMainText";
 
-import './MailBlock.css';
-import './dropzone.css';
-import './filepicker.css';
+import "./MailBlock.css";
+import "./dropzone.css";
+import "./filepicker.css";
 
 class MailBlock extends React.Component {
   constructor(props, context) {
@@ -30,9 +31,9 @@ class MailBlock extends React.Component {
 
   render() {
     var componentConfig = {
-      iconFiletypes: ['.jpg', '.png', '.gif'],
+      iconFiletypes: [".jpg", ".png", ".gif"],
       showFiletypeIcon: true,
-      postUrl: '/'
+      postUrl: "/"
     };
     var djsConfig = { autoProcessQueue: true };
     var eventHandlers = { addedfile: file => console.log(file) };
@@ -54,7 +55,7 @@ class MailBlock extends React.Component {
           djsConfig={djsConfig}
         />
         <input
-          name={'heading'}
+          name={"heading"}
           onChange={::this.handleChange}
           className="mailBlock__input mailBlock__load-heading"
           type="text"
@@ -62,13 +63,14 @@ class MailBlock extends React.Component {
           value={this.props.defaultHeading}
         />
         <textarea
-          name={'mainText'}
+          name={"mainText"}
           onChange={::this.handleChange}
           className="mailBlock__input mailBlock__load-text"
           type="text"
           placeholder="Текст"
           value={this.props.defaultMainText}
         />
+        <TextEditor />
       </div>
     );
   }
