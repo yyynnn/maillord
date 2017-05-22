@@ -1,59 +1,53 @@
-import React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { Link } from "react-router";
-import Button from "../components/Button/Button.js";
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
+import Button from '../components/Button/Button.js';
 
-import MailBlock from "./MailBlock/MailBlock.js";
+import MailBlock from './MailBlock/MailBlock.js';
 
-import * as addHeading from "../redux/actions/addHeading";
+import * as addBlock from '../redux/actions/addBlock';
+import * as removeBlock from '../redux/actions/removeBlock';
 
-import "./Home.css";
+import './Home.css';
 
 class Home extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      mailBlock: [],
-      key: 0
-    };
-    this.onRemoveBtnClick = this.onRemoveBtnClick.bind(this);
   }
 
-  onDownloadReady(event) {
-    console.log("server start");
-  }
+  sendToServer() {}
 
   onAddBtnClick(event) {
-    const mailBlock = this.state.mailBlock;
-    let key = this.state.key;
-    this.setState({
-      mailBlock: mailBlock.concat(
-        <MailBlock length={mailBlock.length} id={this.state.key} key={this.state.key} onRemoveBtnClick={this.onRemoveBtnClick} />
-      ),
-      key: key + 1
-    });
+    let form = {
+      mainText: '',
+      heading: ''
+    };
+    this.props.actions.addBlockAction.addBlock(form);
   }
 
   onRemoveBtnClick(event) {
-    let mailBlock = this.state.mailBlock;
-    let key = this.state.key;
-    this.setState({
-      mailBlock: mailBlock.filter(function(element) {
-        console.log(element.key, event, Number(element.key) !== event);
-        return Number(element.key) !== event;
-      })
-    });
+    this.props.actions.removeBlockAction.removeBlock(event);
   }
 
   render() {
     return (
       <div className="container">
         <div className="home__main">
-          {this.state.mailBlock}
-          <Button data={"+"} onClickEvent={::this.onAddBtnClick} />
+          {this.props.formsReducer.forms.map((item, index) => {
+            return (
+              <MailBlock
+                defaultHeading={this.props.formsReducer.forms[index].heading}
+                defaultMainText={this.props.formsReducer.forms[index].mainText}
+                id={index}
+                key={index}
+                onRemoveBtnClick={::this.onRemoveBtnClick}
+              />
+            );
+          })}
+          <Button data={'+'} onClickEvent={::this.onAddBtnClick} />
         </div>
-        <Button buttonType={"button__download"} data={"Скачать"} onClickEvent={::this.onDownloadReady} />
+        <Button buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.sendToServer} />
       </div>
     );
   }
@@ -61,14 +55,16 @@ class Home extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    locale: state.localeChange.locale
+    store: state,
+    formsReducer: state.formsReducer
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
-      passTimeOfDay: bindActionCreators(addHeading, dispatch)
+      addBlockAction: bindActionCreators(addBlock, dispatch),
+      removeBlockAction: bindActionCreators(removeBlock, dispatch)
     }
   };
 }

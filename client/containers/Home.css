@@ -15,6 +15,10 @@
   color: #000;
 }
 
+.home__main {
+      margin-top: 170px;
+}
+
 .home__lang-change_ru {
   margin-right: 65px;
 }

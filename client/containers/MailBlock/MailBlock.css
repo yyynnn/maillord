@@ -12,7 +12,7 @@ margin-top: 35px;
 .mailBlock__input {
   padding: 2%;
   border-radius: 5px;
-  border: 1px solid #d3daff;
+  border: 2px solid #d3daff;
   font-size: 16px;
   margin-bottom: 10px;
   font-family: 'CoreSans';
@@ -23,7 +23,7 @@ margin-top: 35px;
   text-align: center;
   padding: 4%;
   border-radius: 5px;
-  border: 1px dashed #d3daff;
+  border: 2px dashed #d3daff;
   font-size: 16px;
   margin-bottom: 10px;
   transition: 200ms all ease;

@@ -1,11 +1,10 @@
-import React, { Component, PropTypes } from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
+import React, { Component, PropTypes } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import * as timeOfDay from "../redux/actions/timeOfDay";
-import * as localeChange from "../redux/actions/localeChange";
+import appLogo from '../assets/img/logo.png';
 
-class App extends Component {
+export default class App extends Component {
   constructor(props, context) {
     super(props, context);
   }
@@ -13,24 +12,11 @@ class App extends Component {
   render() {
     return (
       <div className="app__children">
+        <div className="app__logo-wrapper">
+          <img src={appLogo} alt="maillord.logo" />
+        </div>
         {this.props.children}
       </div>
     );
   }
 }
-
-function mapStateToProps(state) {
-  return {
-    locale: state.localeChange.locale
-  };
-}
-
-function mapDispatchToProps(dispatch) {
-  return {
-    actions: {
-      localeChangeAction: bindActionCreators(localeChange, dispatch)
-    }
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(App);

@@ -1,44 +1,50 @@
-import React from "react";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import { Link } from "react-router";
-import ReactDOM from "react-dom";
-import DropzoneComponent from "react-dropzone-component";
-// import DropzoneImg from "react-dropzone";
-import ButtonRemove from "../../components/ButtonRemove/ButtonRemove.js";
+import React from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { Link } from 'react-router';
+import ReactDOM from 'react-dom';
+import DropzoneComponent from 'react-dropzone-component';
 
-import "./MailBlock.css";
-import "./dropzone.css";
-import "./filepicker.css";
+import ButtonRemove from '../../components/ButtonRemove/ButtonRemove.js';
+
+import * as addHeading from '../../redux/actions/addHeading';
+import * as addMainText from '../../redux/actions/addMainText';
+
+import './MailBlock.css';
+import './dropzone.css';
+import './filepicker.css';
 
 class MailBlock extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      heading: "",
-      mainText: ""
-    };
   }
 
   handleChange({ target }) {
-    this.setState({
-      [target.name]: target.value
-    });
+    let data = {
+      id: this.props.id,
+      name: target.name,
+      value: target.value
+    };
+    this.props.actions.addMainTextAction.addMainText(data);
   }
 
   render() {
     var componentConfig = {
-      iconFiletypes: [".jpg", ".png", ".gif"],
+      iconFiletypes: ['.jpg', '.png', '.gif'],
       showFiletypeIcon: true,
-      postUrl: "/"
+      postUrl: '/'
     };
     var djsConfig = { autoProcessQueue: true };
     var eventHandlers = { addedfile: file => console.log(file) };
     return (
       <div className="mailBlock__main">
-        <span>
-          <ButtonRemove onClickEvent={() => this.props.onRemoveBtnClick(this.props.id)} />
-        </span>
+        {console.log()}
+        <h1>
+          Блок {this.props.id} <span>
+            <ButtonRemove onClickEvent={() => this.props.onRemoveBtnClick(this.props.id)} />
+          </span>
+        </h1>
+
         <DropzoneComponent
           className="mailBlock__dropzone"
           activeClassName="mailBlock__dropzone_active"
@@ -48,20 +54,20 @@ class MailBlock extends React.Component {
           djsConfig={djsConfig}
         />
         <input
-          name="heading"
-          value={this.state.heading}
+          name={'heading'}
           onChange={::this.handleChange}
           className="mailBlock__input mailBlock__load-heading"
           type="text"
           placeholder="Заголовок"
+          value={this.props.defaultHeading}
         />
         <textarea
-          name="mainText"
-          value={this.state.mainText}
+          name={'mainText'}
           onChange={::this.handleChange}
           className="mailBlock__input mailBlock__load-text"
           type="text"
           placeholder="Текст"
+          value={this.props.defaultMainText}
         />
       </div>
     );
@@ -76,20 +82,11 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: {}
+    actions: {
+      addMainTextAction: bindActionCreators(addMainText, dispatch),
+      addHeadingAction: bindActionCreators(addHeading, dispatch)
+    }
   };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(MailBlock);
-
-//
-// {        <div>
-//           <DropzoneImg
-//             className="mailBlock__dropzone"
-//             activeClassName="mailBlock__dropzone_active"
-//             rejectClassName="mailBlock__dropzone_reject"
-//             onDrop={this.onDrop}
-//           >
-//             <div>Картинку сувать сюда</div>
-//           </DropzoneImg>
-//         </div>}

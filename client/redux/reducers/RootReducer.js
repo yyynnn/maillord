@@ -1,10 +1,10 @@
-import { combineReducers } from "redux";
-import { routerReducer } from "react-router-redux";
+import { combineReducers } from 'redux';
+import { routerReducer } from 'react-router-redux';
 
-import addHeading from "./addHeading";
+import formsReducer from './formsReducer';
 
 let RootReducer = combineReducers({
-  addHeading,
+  formsReducer,
   routing: routerReducer
 });
 

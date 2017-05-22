@@ -3,35 +3,37 @@
 }
 
 .button {
-  background-color: #424d82;
   padding: 10px;
-  border-radius: 50%;
-  color: white;
-  font-size: 41px;
-  border: none;
+  border-radius: 5px;
+  color: #424d82;
+  font-size: 40px;
   width: 66px;
   height: 66px;
   outline: none;
-  transition: 300ms all ease;
+  transition: 200ms all ease;
   cursor: pointer;
+  border: 2px solid #d3daff;
+  background-color: transparent;
 }
 
 .button__download {
   backface-visibility: hidden;
   width: 100%;
-    position: fixed;
-    max-width: 180px;
-    border: 1px solid #d3daff;
-    background-color: transparent;
-    bottom: 0;
-    right: 0;
-    z-index: 2;
-    color: #424d82;
-    border-radius: 0;
-    font-family: 'CoreSans'!important;
-    margin: 2%;
-    font-size: 27px;
-    border-radius: 5px;
+  position: fixed;
+  max-width: 126px;
+  border: 0px solid #d3daff;
+  background-color: #1c284e;
+  right: 0;
+  z-index: 2;
+  color: #ffffff;
+  border-radius: 0;
+  font-family: 'CoreSans'!important;
+  margin: 17px;
+  font-size: 22px;
+  border-radius: 5px;
+  height: 50px;
+  top: 0;
+  bottom: 0;
 }
 
 .button__download:hover {
@@ -39,5 +41,9 @@
 }
 
 .button:hover {
+  border: 1px solid #424d82;
   box-shadow: 0 16px 20px -7px #848fce;
+  background-color: #424d82;
+  color: #fff;
+    border-radius: 50%;
 }
