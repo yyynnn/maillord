@@ -1,0 +1,13 @@
+.public-DraftEditor-content{
+      font-family: 'CoreSans';
+}
+div.RichTextEditor__root___2QXK- {
+      border: 2px solid #d5dcff;
+          min-height: 240px;
+}
+div.EditorToolbar__root___3_Aqz {
+    border-bottom: 1px solid #d5dcff;
+  }
+.EditorToolbar__root___3_Aqz button {
+      border: 1px solid #d7dcff;
+}

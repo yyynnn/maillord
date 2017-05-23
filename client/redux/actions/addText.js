@@ -1,8 +1,8 @@
 import { ADD_TEXT } from './types';
 
-export function addMainText(mainText) {
+export function addText(text) {
   return {
     type: ADD_TEXT,
-    payload: mainText
+    payload: text
   };
 }

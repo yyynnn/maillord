@@ -2,7 +2,8 @@ const initialState = {
   forms: [
     {
       heading: '',
-      mainText: ''
+      mainText: '',
+      image: ''
     }
   ]
 };

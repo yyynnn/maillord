@@ -11,8 +11,12 @@ body {
 }
 
 a {
-  color: var(--whitish);
-  text-decoration: none;
+  color: #1c3a98;
+      text-decoration: none;
+      border-bottom: 1px solid #1c3a98;
+      display: inline-block;
+      line-height: 0.95;
+      text-shadow: 1px 1px white, 1px -1px white, -1px 1px white, -1px -1px white;
 }
 
 ul {
@@ -26,10 +30,40 @@ h1 {
   margin: 0;
 }
 
+
+
 ::-webkit-input-placeholder {color:#d3daff;font-family: 'CoreSans';}
 ::-moz-placeholder          {color:#d3daff;font-family: 'CoreSans';}/* Firefox 19+ */
 :-moz-placeholder           {color:#d3daff;font-family: 'CoreSans';}/* Firefox 18- */
 :-ms-input-placeholder      {color:#d3daff;font-family: 'CoreSans';}
+.app {
+
+    overflow: hidden;
+    filter: blur(0.4px);
+}
+.app__loader {
+  background-color: #fff;
+margin: 0;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+justify-content: center;
+align-items: center;
+position: absolute;
+overflow: hidden;
+animation: 1400ms 1s loaderFade ease forwards;
+transform-origin: center;
+z-index: 100;
+display: flex;
+}
+
+.app_loader-wrapper {
+  animation: 1000ms 1s loaderScale ease forwards;
+  transform-origin: 26% 17%;
+width: 156px;
+height: 150px;
+}
 
 .app__children {
   z-index: 1;
@@ -38,27 +72,49 @@ min-height: 100vh;
 width: 100vw;
 justify-content: center;
 align-items: center;
-padding-bottom: 40px;
-background-color: #fdfdff;
+background-color: #f8f8ff;
+}
+
+.app__leftLogo {
+  position: absolute;
+  z-index: 1;
+  animation-timing-function: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+  animation: 700ms leftLogoFly forwards;
+}
+.app__rightLogoMain{
+  position: relative;
+    z-index:0;
+animation-timing-function:cubic-bezier(0.165, 0.840, 0.440, 1.000);
+animation: 700ms RightLogoFly forwards;
+top: -10px;
+left: 21px;
+}
+
+ .app__rightLogoHelper{
+  position: relative;
+    z-index: 1;
+animation-timing-function: cubic-bezier(0.165, 0.840, 0.440, 1.000);
+animation: 700ms RightLogoFly forwards;
+top: -37px;
+    left: -53px;
 }
 
 .container {
   width: 100%;
-padding: 0 3%;
+padding: 0 5%;
 }
 
 .app__logo-wrapper {
   backface-visibility: hidden;
-
+  z-index: 11;
   position: fixed;
-left: 0;
-top: 0;
-padding: 30px;
-width: 100%;
-height: 25px;
-box-shadow: 0 0 63px -5px #eff2ff;
-background-color: white;
-z-index: 1;
+  left: 0;
+  top: 0;
+  padding: 30px;
+  width: 100%;
+  height: 25px;
+  box-shadow: 0 0 63px -5px #eff2ff;
+  background-color: white;
 & img {
   width: 150px;
 }
@@ -68,5 +124,70 @@ z-index: 1;
   .app__children {
       align-items: center;
       /*margin-top: 100px;*/
+  }
+}
+
+@keyframes leftLogoFly {
+  0% {
+    transform: translate( -1000px, 1000px);
+    opacity: 0;
+  }
+  30% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate( 0px, 0px);
+    opacity: 1;
+  }
+}
+
+@keyframes RightLogoFly {
+  0% {
+    transform: translate( 1000px, -1000px);
+    opacity: 0;
+  }
+
+  30% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate( 0px, 0px);
+    opacity: 1;
+  }
+}
+
+@keyframes loaderFade {
+  0% {
+    opacity: 1;
+    display: flex;
+    z-index: 100;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    z-index: 100;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    z-index: -100;
+  }
+}
+
+@keyframes loaderScale {
+  0% {
+    transform: scale(1);
+    display: flex;
+    opacity: 1;
+  }
+  1% {
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+    transform: scale(0);
   }
 }

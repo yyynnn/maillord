@@ -45,3 +45,9 @@ margin-top: 35px;
   justify-content: center;
   align-items: center;
 }
+
+
+div.dz-default.dz-message {
+  font-size: 22px;
+margin: 10px;
+}

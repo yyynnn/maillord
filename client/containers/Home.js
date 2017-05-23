@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
-import Button from '../components/Button/Button.js';
 
+import Button from '../components/Button/Button.js';
 import MailBlock from './MailBlock/MailBlock.js';
 
 import * as addBlock from '../redux/actions/addBlock';
@@ -21,7 +21,8 @@ class Home extends React.Component {
   onAddBtnClick(event) {
     let form = {
       mainText: '',
-      heading: ''
+      heading: '',
+      image: ''
     };
     this.props.actions.addBlockAction.addBlock(form);
   }
@@ -39,6 +40,7 @@ class Home extends React.Component {
               <MailBlock
                 defaultHeading={this.props.formsReducer.forms[index].heading}
                 defaultMainText={this.props.formsReducer.forms[index].mainText}
+                defaultImage={this.props.formsReducer.forms[index].image}
                 id={index}
                 key={index}
                 onRemoveBtnClick={::this.onRemoveBtnClick}
