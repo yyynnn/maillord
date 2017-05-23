@@ -37,7 +37,13 @@
   bottom: 0;
 }
 
-
+.mailBlock__input_buttonName {
+  width: 140px;
+  margin: auto;
+  margin-top: 10px;
+  text-align: center;
+  text-transform: uppercase;
+}
 
 .button:hover {
   border: 1px solid #424d82;

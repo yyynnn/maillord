@@ -3,7 +3,8 @@ const initialState = {
     {
       heading: '',
       mainText: '',
-      image: ''
+      image: '',
+      buttonName: ''
     }
   ]
 };

@@ -1,0 +1,12 @@
+
+
+div.dz-default.dz-message {
+  font-size: 22px;
+margin: 10px;
+}
+
+.dropzone div.dz-preview.dz-file-preview .dz-image {
+    border-radius: 20px;
+    background: #999;
+    background: linear-gradient(to bottom, #f8f8ff, #f8f8ff);
+}

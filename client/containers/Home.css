@@ -4,3 +4,12 @@
       margin-top: 170px;
       padding-bottom: 40px;
 }
+
+.home__faqLink {
+  z-index: 12;
+  position: absolute;
+  top: 31px;
+right: 168px;
+    opacity: 0.6;
+    width: 22px;
+}

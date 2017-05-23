@@ -9,6 +9,8 @@ import MailBlock from './MailBlock/MailBlock.js';
 import * as addBlock from '../redux/actions/addBlock';
 import * as removeBlock from '../redux/actions/removeBlock';
 
+import questionLink from '../assets/img/question.png';
+
 import './Home.css';
 
 class Home extends React.Component {
@@ -16,13 +18,36 @@ class Home extends React.Component {
     super(props, context);
   }
 
-  sendToServer() {}
+  update() {
+    let data = JSON.stringify(this.props.dataToBackend);
+    return fetch('/', {
+      method: 'put',
+      body: JSON.stringify(data),
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json'
+      }
+    })
+      .then(this.checkStatus)
+      .then(() => console.log('updated!!!'));
+  }
+
+  checkStatus(response) {
+    if (response.status >= 200 && response.status < 300) {
+      return response;
+    } else {
+      var error = new Error(response.statusText);
+      error.response = response;
+      throw error;
+    }
+  }
 
   onAddBtnClick(event) {
     let form = {
       mainText: '',
       heading: '',
-      image: ''
+      image: '',
+      buttonName: ''
     };
     this.props.actions.addBlockAction.addBlock(form);
   }
@@ -41,6 +66,7 @@ class Home extends React.Component {
                 defaultHeading={this.props.formsReducer.forms[index].heading}
                 defaultMainText={this.props.formsReducer.forms[index].mainText}
                 defaultImage={this.props.formsReducer.forms[index].image}
+                defaultButtonName={this.props.formsReducer.forms[index].buttonName}
                 id={index}
                 key={index}
                 onRemoveBtnClick={::this.onRemoveBtnClick}
@@ -49,7 +75,8 @@ class Home extends React.Component {
           })}
           <Button data={'+'} onClickEvent={::this.onAddBtnClick} />
         </div>
-        <Button buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.sendToServer} />
+        <img className="home__faqLink" src={questionLink} alt="" />
+        <Button buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.update} />
       </div>
     );
   }
@@ -57,7 +84,7 @@ class Home extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    store: state,
+    dataToBackend: state.formsReducer.forms,
     formsReducer: state.formsReducer
   };
 }
