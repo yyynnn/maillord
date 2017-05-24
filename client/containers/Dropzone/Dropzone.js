@@ -18,7 +18,7 @@ class Dropzone extends React.Component {
   render() {
     var componentConfig = {
       postUrl: 'https://api.imgur.com/3/image',
-      iconFiletypes: ['.jpg', '.png', '.gif'],
+      iconFiletypes: ['.jpeg', '.jpg', '.png', '.gif'],
       showFiletypeIcon: true
     };
     var djsConfig = {
@@ -54,7 +54,7 @@ class Dropzone extends React.Component {
         config={componentConfig}
         eventHandlers={eventHandlers}
         djsConfig={djsConfig}>
-        <div className="dz-default dz-message" data-dz-message><span>Картинки сувать сюда</span></div>
+        <div className="dz-default dz-message" data-dz-message><span>Картинку сувать сюда</span></div>
       </DropzoneComponent>
     );
   }

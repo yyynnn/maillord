@@ -8,6 +8,24 @@ flex-direction: column;
 position: relative;
 margin-top: 35px;
 }
+.mailBlock__input-wrapper {
+  display: flex;
+  margin-top: 10px;
+}
+.mailBlock__input_buttonLink {
+  display: inline-block;
+      width: 66%;
+      margin-right: 10px;
+}
+
+.mailBlock__input_buttonName {
+  width: 140px;
+  margin: auto;
+  text-align: center;
+  text-transform: uppercase;
+  display: inline-block;
+      width: 33%;
+}
 
 .mailBlock__input {
   padding: 2%;
@@ -50,4 +68,43 @@ margin-top: 35px;
 div.dz-default.dz-message {
   font-size: 22px;
 margin: 10px;
+}
+
+
+
+.onoffswitch {
+    position: relative; width: 50px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    height: 20px; padding: 0; line-height: 20px;
+    border: 2px solid #d6ddff; border-radius: 20px;
+    background-color: transparent;
+    transition: background-color 0.2s ease-in-out;
+    margin: 10px 0;
+}
+.onoffswitch-label:before {
+    content: "";
+    display: block; width: 20px; margin: 0px;
+    background: #FFFFFF;
+    position: absolute;
+    top:0; 
+    bottom: 0;
+    right: 28px;
+    border: 2px solid #d6ddff; border-radius: 20px;
+    transition: all 0.2s ease-in-out 0s;
+    height: 20px;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label {
+    background-color: #252C4E;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label, .onoffswitch-checkbox:checked + .onoffswitch-label:before {
+   border-color: #252C4E;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label:before {
+    right: 0px;
 }

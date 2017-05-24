@@ -45,14 +45,24 @@ class MailBlock extends React.Component {
           value={this.props.defaultHeading}
         />
         <TextEditor id={this.props.id} />
-        <input
-          name={'buttonName'}
-          onChange={::this.handleChange}
-          className="mailBlock__input mailBlock__input_buttonName"
-          type="text"
-          placeholder="Название кнопки"
-          value={this.props.defaultButtonName}
-        />
+        <div className="mailBlock__input-wrapper">
+          <input
+            name={'buttonLink'}
+            onChange={::this.handleChange}
+            className="mailBlock__input mailBlock__input_buttonLink"
+            type="text"
+            placeholder="Ссылка кнопки"
+            value={this.props.defaultbuttonLink}
+          />
+          <input
+            name={'buttonName'}
+            onChange={::this.handleChange}
+            className="mailBlock__input mailBlock__input_buttonName"
+            type="text"
+            placeholder="Название кнопки"
+            value={this.props.defaultButtonName}
+          />
+        </div>
       </div>
     );
   }

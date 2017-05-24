@@ -5,29 +5,25 @@ import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpackConfig from '../webpack.config.dev';
-
-let router = require('express').Router();
-let bodyParser = require('body-parser');
+import bodyParser from 'body-parser';
 
 let app = express();
-let port = 8080;
-
+const port = 8080;
 const compiler = webpack(webpackConfig);
 
-router.use(bodyParser.json());
-router.put('/', update);
+app.use(bodyParser.json());
+
+app.post('/api/data', update);
 
 function update(req, res) {
-  console.log('updating-', req.body);
+  console.log(req.body);
   res.sendStatus(200);
 }
 
 app.use(
   webpackMiddleware(compiler, {
     hot: true,
-    publicPath: webpackConfig.output.publicPath,
-    historyApiFallback: true,
-    noInfo: true
+    publicPath: webpackConfig.output.publicPath
   })
 );
 app.use(webpackHotMiddleware(compiler));

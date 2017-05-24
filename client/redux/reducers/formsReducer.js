@@ -1,19 +1,23 @@
 const initialState = {
+  checkbox: false,
   forms: [
     {
       heading: '',
       mainText: '',
       image: '',
-      buttonName: ''
+      buttonName: '',
+      buttonLink: ''
     }
   ]
 };
 
 export default function formsReducer(state = initialState, action) {
   switch (action.type) {
+    case 'CHECKBOX_SWITCH':
+      return { ...state, checkbox: !action.payload };
     case 'REMOVE_BLOCK':
-      let rresult = state.forms.filter((_, i) => i !== action.payload);
-      return { forms: rresult };
+      let resultRemove = state.forms.filter((_, i) => i !== action.payload);
+      return { forms: resultRemove };
     case 'ADD_BLOCK':
       return { ...state, forms: [...state.forms, action.payload] };
     case 'ADD_TEXT':
