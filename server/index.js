@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import fs from 'fs';
+import uuid from 'uuid';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -8,40 +9,26 @@ import webpackConfig from '../webpack.config.dev';
 import bodyParser from 'body-parser';
 import Handlebars from 'handlebars';
 
-import React from 'react';
-import ReactDOMServer from 'react-dom/server';
-import { StaticRouter } from 'react-router';
-// var Routes = require('../client/routes.js').default;
-
 let app = express();
 const port = 8080;
 const compiler = webpack(webpackConfig);
+let router = express.Router();
+let uuidv4 = uuid.v4();
 
 app.use(bodyParser.json());
 app.post('/api/data', update);
-app.use('/mail', express.static('/mail'));
-// app.use(express.static(path.join(__dirname, '/public')));
 
 function update(req, res) {
-  var source = fs.readFile('./templates/template.html', 'utf8', function(err, data) {
+  console.log(res);
+  let source = fs.readFile('./templates/template.html', 'utf8', function(err, data) {
     if (err) throw err;
-
-    var data = data.toString();
-    var compile = Handlebars.compile(data);
-    var result = compile(req.body);
-    fs.writeFile('./mail/email.html', result, function(err) {
-      if (err) {
-        return console.log(err);
-      }
+    let dataFront = data.toString();
+    let compile = Handlebars.compile(dataFront);
+    let result = compile(req.body);
+    fs.writeFile(`./mail/email${uuidv4}.html`, result, function(err) {
+      if (err) throw err;
+      res.sendStatus(200);
     });
-    res.download('/mail/email.html', 'email.pdf', function(err) {
-      if (err) {
-        console.log(err);
-      } else {
-        // decrement a download credit, etc.
-      }
-    });
-    res.sendStatus(200);
   });
 }
 
@@ -53,8 +40,15 @@ app.use(
 );
 app.use(webpackHotMiddleware(compiler));
 
-app.get('*', (req, res) => {
+router.get('/download', function(req, res) {
+  let file = path.join(__dirname, `../mail/email${uuidv4}.html`);
+  console.log(file);
+  res.download(file, uuid.v4() + file);
+});
+app.use('/', router);
+
+app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, './index.html'));
 });
 
-app.listen(process.env.PORT || port, () => console.log('Running on localhost:8080'));
+app.listen(process.env.PORT || port, () => console.log('Running on localhost:' + port));

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import Button from '../components/Button/Button.js';
 import MailBlock from './MailBlock/MailBlock.js';
@@ -17,10 +17,12 @@ import './Home.css';
 class Home extends React.Component {
   constructor(props, context) {
     super(props, context);
+    this.linkButton = '/download';
   }
 
   update() {
     let data = JSON.stringify(this.props.dataToBackend);
+    console.log(data);
     return fetch('/api/data', {
       method: 'post',
       body: data,
@@ -28,9 +30,7 @@ class Home extends React.Component {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }
-    })
-      .then(this.checkStatus)
-      .then(() => console.log('updated!!!'));
+    }).then(this.checkStatus);
   }
 
   checkStatus(response) {
@@ -96,8 +96,8 @@ class Home extends React.Component {
           })}
           <Button data={'+'} onClickEvent={::this.onAddBtnClick} />
         </div>
+        <Button href={this.linkButton} buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.update} />
 
-        <Button buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.update} />
       </div>
     );
   }
