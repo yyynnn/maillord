@@ -5,6 +5,6 @@ Simple mailbuilder, template independent.
 - Frontend built with react/redux.
 - Backend made with express.
 
-![body](http://i.imgur.com/IMfpcMF.png =300X538)
+![body](http://i.imgur.com/IMfpcMF.png){:height="538px" width="300px"}
 
 There are some bugs.  Full working solution TBD soon.
