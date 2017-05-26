@@ -1,5 +1,7 @@
 # Maillord
 
+![logo](http://i.imgur.com/q7V0v87.png)
+
 Simple mailbuilder. Template independent.
 Frontend built with react/redux.
 Backend made with express.
