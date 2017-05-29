@@ -25,7 +25,7 @@ function update(req, res) {
     let dataFront = data.toString();
     let compile = Handlebars.compile(dataFront);
     let result = compile(req.body);
-    fs.writeFile(`./mail/email${uuidv4}.html`, result, function(err) {
+    fs.writeFile(`./download/email${uuidv4}.html`, result, function(err) {
       if (err) throw err;
       res.sendStatus(200);
     });
@@ -41,7 +41,7 @@ app.use(
 app.use(webpackHotMiddleware(compiler));
 
 router.get('/download', function(req, res) {
-  let file = path.join(__dirname, `../mail/email${uuidv4}.html`);
+  let file = path.join(__dirname, `../download/email${uuidv4}.html`);
   console.log(file);
   res.download(file, uuid.v4() + file);
 });

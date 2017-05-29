@@ -13,9 +13,20 @@ import rightLogoHelper from '../assets/img/RightLogoHelperAnim.png';
 export default class App extends Component {
   constructor(props, context) {
     super(props, context);
+    this.state = {
+      loading: true
+    };
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({ loading: false }), 100);
   }
 
   render() {
+    const { loading } = this.state;
+    if (loading) {
+      return null; // render null when app is not ready
+    }
     return (
       <div className="app">
         <Helmet>
