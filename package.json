@@ -8,7 +8,8 @@
   },
   "scripts": {
     "dev": "nodemon --watch server --exec babel-node -- server/index-dev.js",
-    "start": "npm run buildNix && node server/index-production.js",
+    "startBack": "npm run buildNix && node server/index-production.js",
+    "start": "node server/index-production.js",
     "buildWin": "set NODE_ENV=production && webpack",
     "buildNix": "webpack"
   },

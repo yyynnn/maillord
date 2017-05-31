@@ -31,7 +31,6 @@ function update(req, res) {
 
 router.get('/download', function(req, res) {
   var file = path.join(__dirname, `../download/email${uuidv4}.html`);
-  console.log(file);
   res.download(file, uuid.v4() + file);
 });
 app.use('/', router);
