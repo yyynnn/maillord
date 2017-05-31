@@ -11,7 +11,7 @@ var serveStatic = require('serve-static');
 var app = express();
 var port = process.env.PORT || 8080;
 var router = express.Router();
-var uuidv4 = uuid.v4();
+// var uuidv4 = uuid.v4();
 
 app.use(bodyParser.json());
 app.post('/downloaddata', update);
@@ -22,16 +22,16 @@ function update(req, res) {
     var dataFront = data.toString();
     var compile = handlebar.compile(dataFront);
     var result = compile(req.body);
-    fs.writeFile(`./download/email${uuidv4}.html`, result, function(err) {
+    fs.writeFile(`./download/email.html`, result, function(err) {
       if (err) throw err;
       res.sendStatus(200);
     });
   });
 }
-
+app.use(serveStatic(path.join(__dirname, '../download/')));
 router.get('/download', function(req, res) {
-  var file = path.join(__dirname, `../download/email${uuidv4}.html`);
-  res.download(file, uuid.v4() + file);
+  var file = path.join(__dirname, `../download/email.html`);
+  res.download(file, file);
 });
 app.use('/', router);
 app.use(serveStatic(path.join(__dirname, '../public/')));
