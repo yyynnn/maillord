@@ -21,7 +21,7 @@ class Home extends React.Component {
 
   update(target) {
     let data = JSON.stringify(this.props.dataToBackend);
-    return fetch('/api/data', {
+    return fetch('/downloaddata', {
       method: 'post',
       body: data,
       headers: {

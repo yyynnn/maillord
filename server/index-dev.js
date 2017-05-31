@@ -16,7 +16,7 @@ const router = express.Router();
 const uuidv4 = uuid.v4();
 
 app.use(bodyParser.json());
-app.post('/api/data', update);
+app.post('/downloaddata', update);
 
 function update(req, res) {
   let source = fs.readFile('./templates/email-template1.html', 'utf8', function(err, data) {
