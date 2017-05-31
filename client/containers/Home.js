@@ -28,9 +28,7 @@ class Home extends React.Component {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }
-    })
-      .then(this.checkStatus)
-      .then(this.gotoUrl);
+    }).then(this.checkStatus);
   }
 
   gotoUrl() {
@@ -100,6 +98,7 @@ class Home extends React.Component {
           <Button data={'+'} onClickEvent={::this.onAddBtnClick} />
         </div>
         <Button buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.update} />
+        <Button data={''} onClickEvent={::this.gotoUrl} />
 
       </div>
     );
