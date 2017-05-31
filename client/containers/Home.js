@@ -17,12 +17,10 @@ import './Home.css';
 class Home extends React.Component {
   constructor(props, context) {
     super(props, context);
-    this.linkButton = '/download';
   }
 
-  update() {
+  update(target) {
     let data = JSON.stringify(this.props.dataToBackend);
-    console.log(data);
     return fetch('/api/data', {
       method: 'post',
       body: data,
@@ -30,12 +28,17 @@ class Home extends React.Component {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }
-    }).then(this.checkStatus);
+    })
+      .then(this.checkStatus)
+      .then(this.gotoUrl);
+  }
+
+  gotoUrl() {
+    window.location = '/download';
   }
 
   checkStatus(response) {
     if (response.status >= 200 && response.status < 300) {
-      console.log(response);
       return response;
     } else {
       var error = new Error(response.statusText);
@@ -96,7 +99,7 @@ class Home extends React.Component {
           })}
           <Button data={'+'} onClickEvent={::this.onAddBtnClick} />
         </div>
-        <Button href={this.linkButton} buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.update} />
+        <Button buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.update} />
 
       </div>
     );
@@ -121,5 +124,3 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);
-
-// {<img className="home__faqLink" src={questionLink} alt="" />}

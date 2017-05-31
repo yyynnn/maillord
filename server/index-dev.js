@@ -9,18 +9,17 @@ import webpackConfig from '../webpack.config.dev';
 import bodyParser from 'body-parser';
 import Handlebars from 'handlebars';
 
-let app = express();
-const port = 8080;
+const app = express();
+const port = process.env.PORT || 8080;
 const compiler = webpack(webpackConfig);
-let router = express.Router();
-let uuidv4 = uuid.v4();
+const router = express.Router();
+const uuidv4 = uuid.v4();
 
 app.use(bodyParser.json());
 app.post('/api/data', update);
 
 function update(req, res) {
-  console.log(res);
-  let source = fs.readFile('./templates/template.html', 'utf8', function(err, data) {
+  let source = fs.readFile('./templates/email-template1.html', 'utf8', function(err, data) {
     if (err) throw err;
     let dataFront = data.toString();
     let compile = Handlebars.compile(dataFront);
@@ -48,7 +47,7 @@ router.get('/download', function(req, res) {
 app.use('/', router);
 
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, './index.html'));
+  res.sendFile(path.join(__dirname, './index-dev.html'));
 });
 
-app.listen(process.env.PORT || port, () => console.log('Running on localhost:' + port));
+app.listen(port, () => console.log('Running on localhost:' + port));

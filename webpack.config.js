@@ -2,6 +2,7 @@ process.env.NODE_ENV = 'production';
 var path = require('path');
 var webpack = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   entry: [path.join(__dirname, '/client/index.js')],
@@ -12,6 +13,11 @@ module.exports = {
     publicPath: ''
   },
   plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Maillord',
+      favicon: path.join(__dirname, 'favicon.ico'),
+      template: path.join(__dirname, 'templates/index-template.html')
+    }),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
@@ -27,6 +33,22 @@ module.exports = {
   ],
   module: {
     rules: [
+      {
+        test: /\.(gif|png|jpe?g|svg)$/i,
+        loaders: [
+          'file-loader',
+          {
+            loader: 'image-webpack-loader',
+            query: {
+              progressive: true,
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              }
+            }
+          }
+        ]
+      },
       {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract({
