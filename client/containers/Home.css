@@ -7,7 +7,7 @@
 
 .home__faqLink {
   z-index: 12;
-  position: absolute;
+  position: fixed;
   top: 31px;
 right: 168px;
     opacity: 0.6;
