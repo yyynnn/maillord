@@ -11,3 +11,7 @@ div.EditorToolbar__root___3_Aqz {
 .EditorToolbar__root___3_Aqz button {
       border: 1px solid #d7dcff;
 }
+
+.RichTextEditor__editor___1QqIU .public-DraftEditor-content {
+    min-height: 245px;
+}
