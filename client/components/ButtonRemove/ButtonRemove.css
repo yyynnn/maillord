@@ -7,7 +7,7 @@
   width: 37px;
   height: 37px;
   outline: none;
-  transition: 300ms all ease;
+  transition: 200ms all ease;
   cursor: pointer;
   margin: 0 20px;
   color: #8088b1;
@@ -16,6 +16,9 @@
   top: -3px;
   border: 2px solid #d4dbff;
       text-align: center;
+      & img {
+            width: 13px;
+      }
 }
 
 .button_remove:hover {

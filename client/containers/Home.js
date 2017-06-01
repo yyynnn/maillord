@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import ReactTooltip from 'react-tooltip';
 
 import Button from '../components/Button/Button.js';
+import ButtonDownload from '../components/ButtonDownload/ButtonDownload.js';
 import Modal from '../components/Modal/Modal.js';
 import MailBlock from './MailBlock/MailBlock.js';
 
@@ -17,6 +18,7 @@ import * as modalFirstTime from '../redux/actions/modalFirstTime';
 
 import appLogo from '../assets/img/logo.png';
 import faqLink from '../assets/img/question.png';
+import addIcon from '../assets/img/add_icon.png';
 
 import './Home.css';
 
@@ -112,7 +114,7 @@ class Home extends React.Component {
             );
           })}
           <div data-tip="Эта кнопка добавит новый блок">
-            <Button buttonType={'button__addBlock'} data={'+'} onClickEvent={::this.onAddBtnClick} />
+            <Button buttonType={'button__addBlock'} data={addIcon} onClickEvent={::this.onAddBtnClick} />
           </div>
         </div>
 
@@ -120,7 +122,7 @@ class Home extends React.Component {
           <nav className="home__navigation">
             <img src={appLogo} alt="maillord.logo" />
             <img data-tip="Отключить подсказки" onClick={::this.enableTutorial} className="home__faqLink" src={faqLink} alt="" />
-            <Button buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.update} />
+            <ButtonDownload buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.update} />
           </nav>
 
         </div>

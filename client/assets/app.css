@@ -29,7 +29,17 @@ h1 {
   margin: 0;
 }
 
+div.RichTextEditor__root___2QXK-,input {
+  transition: 200ms all ease-in-out;
+}
 
+div.RichTextEditor__root___2QXK-:focus,input:focus {
+  border: 2px solid #7883b9;
+  outline: none;
+}
+div.RichTextEditor__root___2QXK-:hover,input:hover {
+  border: 2px solid #7883b9;
+}
 
 ::-webkit-input-placeholder {color:#d3daff;font-family: 'CoreSans';}
 ::-moz-placeholder          {color:#d3daff;font-family: 'CoreSans';}/* Firefox 19+ */

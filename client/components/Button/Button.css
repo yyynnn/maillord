@@ -27,6 +27,9 @@
   text-align: center;
 padding: 12px;
 line-height: 40px;
+& img {
+  width: 24px;
+}
 }
 
 .button__download {
@@ -51,12 +54,12 @@ line-height: 40px;
 .button:hover {
   border: 2px solid #424d82;
   box-shadow: 0 16px 20px -7px #848fce;
-  background-color: #424d82;
-  color: #fff;
+  background-color: #fff;
+  color: #424d82;
     border-radius: 50%;
 }
 .button__download:hover {
-  border: 2px solid #424d82;
+  border: 2px solid #7882b3;
   border-radius: 5px;
 }
 
