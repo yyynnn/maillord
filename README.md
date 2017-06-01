@@ -1,5 +1,5 @@
 
-# ![logo](http://i.imgur.com/q7V0v87.png) v0.5.0
+# ![logo](http://i.imgur.com/q7V0v87.png) v0.7.0
 
 Simple mailbuilder, template independent.
 - Frontend built with react/redux.

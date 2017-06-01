@@ -1,6 +1,6 @@
 {
   "name": "maillord",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "mail generator",
   "main": "index.js",
   "engines": {
