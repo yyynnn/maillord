@@ -23,10 +23,15 @@
       margin: auto;
 }
 
+.button__addBlock{
+  text-align: center;
+padding: 12px;
+line-height: 40px;
+}
+
 .button__download {
   backface-visibility: hidden;
   width: 100%;
-  position: fixed;
   max-width: 126px;
   border: 2px solid #1c284e;
   background-color: #1c284e;
@@ -35,12 +40,12 @@
   color: #ffffff;
   border-radius: 0;
   font-family: 'CoreSans'!important;
-  margin: 17px;
   font-size: 22px;
   border-radius: 5px;
   height: 50px;
   top: 0;
   bottom: 0;
+  padding: 5px 11px;
 }
 
 .button:hover {

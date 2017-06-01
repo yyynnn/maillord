@@ -1,4 +1,24 @@
-
+.home__navigation {
+  backface-visibility: hidden;
+    z-index: 11;
+    left: 0;
+    top: 0;
+    padding: 30px 3%;
+    width: 94%;
+    height: 25px;
+    box-shadow: 0 0 63px -5px #eff2ff;
+    background-color: white;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: space-between;
+    position: fixed;
+}
 
 .home__main {
       margin-top: 110px;
@@ -6,13 +26,25 @@
 }
 
 .home__faqLink {
-  z-index: 12;
-  position: fixed;
   top: 31px;
 right: 168px;
     opacity: 0.6;
     width: 22px;
     cursor: pointer;
+    transition: 200ms ease-in-out;
+}
+.home__faqLink:hover {
+transform: scale(0.9);
+}
+
+div.__react_component_tooltip.type-dark {
+    color: #fff;
+    background-color: #1d294f;
+}
+div.__react_component_tooltip.type-dark.place-top:after {
+    border-top-color: #1d294f;
+    border-top-style: solid;
+    border-top-width: 6px;
 }
 
 @media (max-width: 400px) {

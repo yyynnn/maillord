@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Helmet } from 'react-helmet';
 
-import appLogo from '../assets/img/logo.png';
 import fav16 from '../assets/img/favicon-16x16.png';
 import fav32 from '../assets/img/favicon-32x32.png';
 import leftLogo from '../assets/img/LeftLogoAnim.png';
@@ -39,9 +38,6 @@ export default class App extends Component {
           : null}
 
         <div className="app__children">
-          <div className="app__logo-wrapper">
-            <img src={appLogo} alt="maillord.logo" />
-          </div>
           {this.props.children}
         </div>
       </div>

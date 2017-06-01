@@ -33,7 +33,7 @@ class TextEditor extends React.Component {
     let data = {
       id: this.props.id,
       name: 'mainText',
-      value: target.toString('html').replace(/\n/g, '<br>')
+      value: target.toString('html').replace(/\n/g, '')
     };
     this.props.actions.addTextAction.addText(data);
   }

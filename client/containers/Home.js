@@ -15,6 +15,7 @@ import * as ttState from '../redux/actions/tooltip';
 import * as modalState from '../redux/actions/modal';
 import * as modalFirstTime from '../redux/actions/modalFirstTime';
 
+import appLogo from '../assets/img/logo.png';
 import faqLink from '../assets/img/question.png';
 
 import './Home.css';
@@ -83,8 +84,6 @@ class Home extends React.Component {
   render() {
     return (
       <div className="container">
-        {this.props.ttStateStore ? <ReactTooltip /> : null}
-        {this.props.modalFirstTimeStore && this.props.modalStateStore ? <Modal onClosing={::this.modalToggle} /> : null}
         <div className="home__main">
           <p>Оставить начальный блок</p>
           <div className="onoffswitch">
@@ -113,13 +112,20 @@ class Home extends React.Component {
             );
           })}
           <div data-tip="Эта кнопка добавит новый блок">
-            <Button data={'+'} onClickEvent={::this.onAddBtnClick} />
+            <Button buttonType={'button__addBlock'} data={'+'} onClickEvent={::this.onAddBtnClick} />
           </div>
         </div>
-        <img data-tip="Отключить подсказки" onClick={::this.enableTutorial} className="home__faqLink" src={faqLink} alt="" />
+
         <div data-tip="Вы можете скачать письмо сразу после завершения редактирования">
-          <Button buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.update} />
+          <nav className="home__navigation">
+            <img src={appLogo} alt="maillord.logo" />
+            <img data-tip="Отключить подсказки" onClick={::this.enableTutorial} className="home__faqLink" src={faqLink} alt="" />
+            <Button buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.update} />
+          </nav>
+
         </div>
+        {this.props.ttStateStore ? <ReactTooltip /> : null}
+        {this.props.modalFirstTimeStore && this.props.modalStateStore ? <Modal onClosing={::this.modalToggle} /> : null}
       </div>
     );
   }

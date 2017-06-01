@@ -13,5 +13,9 @@ div.EditorToolbar__root___3_Aqz {
 }
 
 .RichTextEditor__editor___1QqIU .public-DraftEditor-content {
-    min-height: 245px;
+    min-height: 180px;
+}
+
+div.RichTextEditor__editor___1QqIU div.RichTextEditor__paragraph___3NTf9, .RichTextEditor__editor___1QqIU pre {
+    margin: 0 0;
 }
