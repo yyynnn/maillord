@@ -4,7 +4,7 @@
   "description": "mail generator",
   "main": "index.js",
   "engines": {
-    "node": "7.10.0"
+    "node": "6.10.3"
   },
   "scripts": {
     "dev": "nodemon --watch server --exec babel-node -- server/index-dev.js",

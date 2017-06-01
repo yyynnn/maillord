@@ -19,17 +19,24 @@ class Home extends React.Component {
     super(props, context);
   }
 
-  update(target) {
-    let data = JSON.stringify(this.props.dataToBackend);
-    return fetch('/downloaddata', {
-      method: 'post',
-      body: data,
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then(this.checkStatus);
+  update() {
+    let datas = JSON.stringify(this.props.dataToBackend);
+    var request = new XMLHttpRequest();
+    request.open('POST', '/downloaddata', true);
+    request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+    request.send(datas);
   }
+  // update() {
+  //   let data = JSON.stringify(this.props.dataToBackend);
+  //   return fetch('/downloaddata', {
+  //     method: 'post',
+  //     body: data,
+  //     headers: {
+  //       Accept: 'application/json',
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }).then(this.checkStatus);
+  // }
 
   gotoUrl() {
     window.location = '/download';
