@@ -15,6 +15,7 @@
   right: -22px;
   top: -3px;
   border: 2px solid #d4dbff;
+      text-align: center;
 }
 
 .button_remove:hover {
