@@ -1,7 +1,6 @@
 import express from 'express';
 import path from 'path';
 import fs from 'fs';
-import uuid from 'uuid';
 import webpack from 'webpack';
 import webpackMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
@@ -13,7 +12,6 @@ const app = express();
 const port = process.env.PORT || 8080;
 const compiler = webpack(webpackConfig);
 const router = express.Router();
-const uuidv4 = uuid.v4();
 
 app.use(bodyParser.json());
 app.post('/downloaddata', update);

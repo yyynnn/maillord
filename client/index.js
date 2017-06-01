@@ -7,7 +7,7 @@ import { createBrowserHistory } from 'history';
 import thunk from 'redux-thunk';
 import RootReducer from './redux/reducers/RootReducer';
 import { Provider } from 'react-redux';
-import { Switch, Route, Router, BrowserRouter } from 'react-router';
+import { Router } from 'react-router';
 
 import routes from './routes.js';
 

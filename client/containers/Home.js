@@ -19,13 +19,6 @@ class Home extends React.Component {
     super(props, context);
   }
 
-  // update() {
-  //   let datas = JSON.stringify(this.props.dataToBackend);
-  //   var request = new XMLHttpRequest();
-  //   request.open('POST', '/downloaddata', true);
-  //   request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
-  //   request.send(datas);
-  // }
   update() {
     let data = JSON.stringify(this.props.dataToBackend);
     return fetch('/downloaddata', {
@@ -35,7 +28,9 @@ class Home extends React.Component {
         Accept: 'application/json',
         'Content-Type': 'application/json'
       }
-    }).then(this.checkStatus);
+    })
+      .then(this.checkStatus)
+      .then(this.gotoUrl);
   }
 
   gotoUrl() {
@@ -105,8 +100,6 @@ class Home extends React.Component {
           <Button data={'+'} onClickEvent={::this.onAddBtnClick} />
         </div>
         <Button buttonType={'button__download'} data={'Скачать'} onClickEvent={::this.update} />
-        <Button data={''} onClickEvent={::this.gotoUrl} />
-
       </div>
     );
   }
