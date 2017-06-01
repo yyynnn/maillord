@@ -5,7 +5,7 @@ import App from './containers/App.js';
 import Home from './containers/Home.js';
 
 const routes = (
-  <App>
+  <App modalFirstTime={false}>
     <Route path="/" component={Home} />
   </App>
 );

@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router';
 import ReactDOM from 'react-dom';
 import DropzoneComponent from 'react-dropzone-component';
+import ReactTooltip from 'react-tooltip';
 
 import ButtonRemove from '../../components/ButtonRemove/ButtonRemove.js';
 import TextEditor from '../TextEditor/TextEditor.js';
@@ -30,13 +31,17 @@ class MailBlock extends React.Component {
   render() {
     return (
       <div className="mailBlock__main">
+        {this.props.ttStateStore ? <ReactTooltip /> : null}
         <h1>
           Блок {this.props.id + 1} <span>
-            <ButtonRemove onClickEvent={() => this.props.onRemoveBtnClick(this.props.id)} />
+            <div data-tip="Эта кнопка удаляет блок"><ButtonRemove onClickEvent={() => this.props.onRemoveBtnClick(this.props.id)} /></div>
           </span>
         </h1>
-        <Dropzone id={this.props.id} defaultImage={this.props.defaultImage} />
+        <div data-tip="Сюда можно сбрасывать картинку для отдельного блока перетаскиванием, либо кликом">
+          <Dropzone id={this.props.id} defaultImage={this.props.defaultImage} />
+        </div>
         <input
+          data-tip="Поле для ввода заголовка"
           name={'heading'}
           onChange={::this.handleChange}
           className="mailBlock__input mailBlock__load-heading"
@@ -44,9 +49,10 @@ class MailBlock extends React.Component {
           placeholder="Заголовок"
           value={this.props.defaultHeading}
         />
-        <TextEditor id={this.props.id} />
+        <div data-tip="Эта область для ввода основного текста. Стандартное форматирование как в MS Word"><TextEditor id={this.props.id} /></div>
         <div className="mailBlock__input-wrapper">
           <input
+            data-tip="Поле для ввода ссылки кнопки"
             name={'buttonLink'}
             onChange={::this.handleChange}
             className="mailBlock__input mailBlock__input_buttonLink"
@@ -55,6 +61,7 @@ class MailBlock extends React.Component {
             value={this.props.defaultbuttonLink}
           />
           <input
+            data-tip="Поле для ввода текста на кнопке"
             name={'buttonName'}
             onChange={::this.handleChange}
             className="mailBlock__input mailBlock__input_buttonName"
@@ -70,7 +77,7 @@ class MailBlock extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    store: state
+    ttStateStore: state.tooltipReducer.ttState
   };
 }
 
