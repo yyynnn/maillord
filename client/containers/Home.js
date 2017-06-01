@@ -85,7 +85,6 @@ class Home extends React.Component {
       <div className="container">
         {this.props.ttStateStore ? <ReactTooltip /> : null}
         {this.props.modalFirstTimeStore && this.props.modalStateStore ? <Modal onClosing={::this.modalToggle} /> : null}
-        {console.log(this.props.modalFirstTimeStore, this.props.modalStateStore)}
         <div className="home__main">
           <p>Оставить начальный блок</p>
           <div className="onoffswitch">

@@ -120,6 +120,9 @@ padding: 0 5%;
   height: 25px;
   box-shadow: 0 0 63px -5px #eff2ff;
   background-color: white;
+  display: flex;
+align-items: center;
+justify-content: flex-start;
 & img {
   width: 150px;
 }
@@ -128,7 +131,9 @@ padding: 0 5%;
 @media (max-width: 500px ) {
   .app__children {
       align-items: center;
-      /*margin-top: 100px;*/
+  }
+  .app__logo-wrapper img {
+      width: 130px;
   }
 }
 

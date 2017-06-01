@@ -14,3 +14,9 @@ right: 168px;
     width: 22px;
     cursor: pointer;
 }
+
+@media (max-width: 400px) {
+  .home__faqLink {
+    right: 127px;
+}
+}

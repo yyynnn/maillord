@@ -26,7 +26,7 @@ export default class App extends Component {
     const { loading } = this.state;
     return (
       <div className="app">
-        {loading
+        {loading && window.innerWidth > 500
           ? <div className={`app__loader app__loader_${loading}`}>
               <div className="app__loader-wrapper">
                 <img className="app__leftLogo" src={leftLogo} alt="" />
